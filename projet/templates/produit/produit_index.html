@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<div class="row">
+    <div class="col-md-5">
+        <h5>Clients </h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="">Ajouter un client</a>
+            <table class="table table-sm">
+                <thead>
+                    <th>Client</th>
+                    <th>Telephone</th>
+                    <th>Détails</th>
+                </thead>
+
+                {% for client in myclient %}
+                <tr>
+                    <th>{{client.nom}}</th>
+                    <th>{{client.telephone}}</th>
+                    <th><a class="btn btn-sm btn-primary" href="{% url 'client' client.id %}">Détails</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <h5>Toutes les comamndes</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="">Ajouter une Commande</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Produit</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Mise à Jour</th>
+                    <th>Supprimer</th>
+                </tr>
+                {% for order in myorder %}
+                <tr>
+                    <th>{{order.produit}}</th>
+                    <th>{{order.client}}</th>
+                    <th>{{order.date_commande}}</th>
+                    <th>{{order.status}}</th>
+
+                    <th><a href="">Supprimer</a></th>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content%}
